@@ -58,7 +58,7 @@ export const { login, logout } = userSlice.actions */
 
 // FETCH - USING THUNK
 
-import { createSlice } from '@reduxjs/toolkit'
+/* import { createSlice } from '@reduxjs/toolkit'
 
 const fetchSlice = createSlice({
     name: 'fetch',
@@ -91,4 +91,38 @@ export const fetchData = () => async (dispatch) => {
     }
 }
 
-export default fetchSlice.reducer
+export default fetchSlice.reducer */
+
+
+// FETCH - USING ASYNC THUNK
+
+/* import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
+
+export const fetchData = createAsyncThunk('fetch/data', async () => {
+    const res = await fetch('https://fakestoreapi.com/products')
+    const data = await res.json()
+
+    return data
+})
+
+const fetchSlice = createSlice({
+    name: 'fetch',
+    initialState: { info: [], loading: false, error: null },
+    reducers: {},
+    extraReducers: (builder) => {
+        builder
+        .addCase(fetchData.pending, (state) => {
+            state.loading = true
+        })
+        .addCase(fetchData.fulfilled, (state, action) => {
+            state.loading = false
+            state.info = action.payload
+        })
+        .addCase(fetchData.rejected, (state, action) => {
+            state.loading = false
+            state.error = action.error.message
+        })
+    }
+})
+
+export default fetchSlice.reducer */

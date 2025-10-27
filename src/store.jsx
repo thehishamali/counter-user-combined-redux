@@ -25,7 +25,7 @@ export default store */
 
 // FETCH - USING THUNK
 
-import { configureStore } from "@reduxjs/toolkit"
+/* import { configureStore } from "@reduxjs/toolkit"
 import fetchReducer from './reducers'
 
 const store = configureStore({
@@ -34,4 +34,18 @@ const store = configureStore({
     }
 })
 
-export default store
+export default store */
+
+
+// FETCH - USING ASYNC THUNK
+
+/* import { configureStore } from '@reduxjs/toolkit'
+import fetchReducer from './reducers'
+
+const store = configureStore({
+    reducer: {
+        fetch: fetchReducer
+    }
+})
+
+export default store */

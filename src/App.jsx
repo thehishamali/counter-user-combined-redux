@@ -71,7 +71,7 @@ export default function App() {
 
 // FETCH - USING THUNK
 
-import { useDispatch, useSelector } from 'react-redux'
+/* import { useDispatch, useSelector } from 'react-redux'
 import { fetchData } from './reducers'
 
 export default function App() {
@@ -86,4 +86,26 @@ export default function App() {
       {info.length > 0 && info.map(i => <li key={i.id}>{i.title}</li>)}
     </>
   )
-}
+} */
+
+
+// FETCH - USING ASYNC THUNK
+
+/* import { useSelector, useDispatch } from 'react-redux'
+import { fetchData } from './reducers'
+
+export default function App() {
+  const { info, loading, error } = useSelector(state => state.fetch)
+  const dispatch = useDispatch()
+
+  return (
+    <>
+      <button onClick={() => dispatch(fetchData())}>Load data</button>
+      {loading && <p>Loading...</p>}
+      {error && <p>Error: {error.message}</p>}
+      {info.length > 0 && info.map(i => {
+        return <li key={i.id}>{i.title}</li>
+      })}
+    </>
+  )
+} */
