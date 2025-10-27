@@ -126,3 +126,43 @@ const fetchSlice = createSlice({
 })
 
 export default fetchSlice.reducer */
+
+
+// TODO
+
+import { createSlice } from '@reduxjs/toolkit'
+
+const todoSlice = createSlice({
+    name: 'todo',
+    initialState: { input: '', list: [], editingIndex: null },
+    reducers: {
+        setInput: (state, action) => {
+            state.input = action.payload
+        },
+        setList: (state) => {
+            if (state.editingIndex !== null) {
+                state.list[state.editingIndex] = state.input
+                state.editingIndex = null
+            }
+            else {
+                state.list.push(state.input)
+            }
+            state.input = ''
+        },
+        remove: (state, action) => {
+            state.list = state.list.filter(l => l !== action.payload)
+        },
+        startEditing: (state, action) => {
+            state.editingIndex = action.payload
+            state.input = state.list[state.editingIndex]
+        },
+        cancelEditing: (state) => {
+            state.editingIndex = null
+            state.input = ''
+        }
+    }
+})
+
+export const { setInput, setList, remove, startEditing, cancelEditing } = todoSlice.actions
+
+export default todoSlice.reducer

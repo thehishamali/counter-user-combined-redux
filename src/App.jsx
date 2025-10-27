@@ -109,3 +109,27 @@ export default function App() {
     </>
   )
 } */
+
+
+// TODO
+
+import { useSelector, useDispatch } from 'react-redux'
+import { setInput, setList, remove, startEditing, cancelEditing } from './reducers'
+
+export default function App() {
+  const input = useSelector(state => state.todo.input)
+  const list = useSelector(state => state.todo.list)
+  const editingIndex = useSelector(state => state.todo.editingIndex)
+  const dispatch = useDispatch()
+
+  return (
+    <>
+      <input value={input} onChange={(e) => dispatch(setInput(e.target.value))} />
+      <button onClick={() => dispatch(setList())}>{editingIndex === null ? 'Submit' : 'Save'}</button>
+      {editingIndex !== null && <button onClick={() => dispatch(cancelEditing())}>Cancel</button>}
+      <ul>
+        {list.map((l, i) => <li key={i}>{l} <button onClick={() => dispatch(startEditing(i))}>Edit</button> <button onClick={() => dispatch(remove(l))}>Remove</button></li>)}
+      </ul>
+    </>
+  )
+}
