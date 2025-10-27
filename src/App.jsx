@@ -45,7 +45,7 @@ export default function App() {
 
 // COUNTER - USING RTK
 
-import { useSelector, useDispatch } from 'react-redux'
+/* import { useSelector, useDispatch } from 'react-redux'
 import { increment, decrement, reset, incrementByAmount, login, logout } from './reducers'
 
 export default function App() {
@@ -64,6 +64,26 @@ export default function App() {
       <h1>{user.isLoggedIn ? user.name : 'Not logged in'}</h1>
       <button onClick={() => dispatch(login({name: 'Hisham'}))}>Login</button>
       <button onClick={() => dispatch(logout())}>Log out</button>
+    </>
+  )
+} */
+
+
+// FETCH - USING THUNK
+
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchData } from './reducers'
+
+export default function App() {
+  const dispatch = useDispatch()
+  const { info, loading, error } = useSelector(state => state.fetch)
+
+  return (
+    <>
+      <button onClick={() => dispatch(fetchData())}>Load Data</button>
+      {loading && <p>Loading...</p>}
+      {error && <p>Error: {error}</p>}
+      {info.length > 0 && info.map(i => <li key={i.id}>{i.title}</li>)}
     </>
   )
 }

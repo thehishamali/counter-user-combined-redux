@@ -16,7 +16,7 @@ export default counterReducer */
 
 // COUNTER - USING RTK
 
-import { createSlice } from '@reduxjs/toolkit'
+/* import { createSlice } from '@reduxjs/toolkit'
 
 export const counterSlice = createSlice({
     name: 'counter',
@@ -53,4 +53,42 @@ export const userSlice = createSlice({
 })
 
 export const { increment, decrement, reset, incrementByAmount } = counterSlice.actions
-export const { login, logout } = userSlice.actions
+export const { login, logout } = userSlice.actions */
+
+
+// FETCH - USING THUNK
+
+import { createSlice } from '@reduxjs/toolkit'
+
+const fetchSlice = createSlice({
+    name: 'fetch',
+    initialState: { info: [], loading: false, error: null },
+    reducers: {
+        fetchStart: (state) => { state.loading = true },
+        fetchSuccess: (state, action) => {
+            state.loading = false
+            state.info = action.payload
+        },
+        fetchError: (state, action) => {
+            state.loading = false
+            state.error = action.payload
+        }
+    }
+})
+
+export const { fetchStart, fetchSuccess, fetchError } = fetchSlice.actions
+
+export const fetchData = () => async (dispatch) => {
+    dispatch (fetchStart())
+
+    try{
+        const res = await fetch('https://jsonplaceholder.typicode.com/posts')
+        const data = await res.json()
+        dispatch(fetchSuccess(data.slice(0, 10)))
+    }
+    catch (err) {
+        dispatch(fetchError(err.message))
+    }
+}
+
+export default fetchSlice.reducer
