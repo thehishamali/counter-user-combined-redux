@@ -22,6 +22,17 @@ const store = configureStore({
 
 export default store */
 
+/* import { configureStore } from '@reduxjs/toolkit'
+import counterReducer from './reducers.jsx'
+
+const store = configureStore({
+    reducer: {
+        counter: counterReducer
+    }
+})
+
+export default store */
+
 
 // FETCH - USING THUNK
 
@@ -50,11 +61,10 @@ const store = configureStore({
 
 export default store */
 
-
 // TODO
 
-import { configureStore } from '@reduxjs/toolkit'
-import todoReducer from './reducers'
+/* import { configureStore } from '@reduxjs/toolkit'
+import todoReducer from './reducers.jsx'
 
 const store = configureStore({
     reducer: {
@@ -62,4 +72,4 @@ const store = configureStore({
     }
 })
 
-export default store
+export default store */

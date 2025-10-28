@@ -55,7 +55,25 @@ export const userSlice = createSlice({
 export const { increment, decrement, reset, incrementByAmount } = counterSlice.actions
 export const { login, logout } = userSlice.actions */
 
+/* import { createSlice } from '@reduxjs/toolkit'
 
+const counterSlice = createSlice({
+    name: 'counter',
+    initialState: { count: 0 },
+    reducers: {
+        increment: (state) => { state.count += 1 },
+        decrement: (state) => { state.count -= 1 },
+        reset: (state) => { state.count = 0 },
+        incrementByValue: (state, action) => {
+            state.count += action.payload
+        }
+    }
+})
+
+export const { increment, decrement, reset, incrementByValue } = counterSlice.actions
+export default counterSlice.reducer
+
+ */
 // FETCH - USING THUNK
 
 /* import { createSlice } from '@reduxjs/toolkit'
@@ -96,7 +114,7 @@ export default fetchSlice.reducer */
 
 // FETCH - USING ASYNC THUNK
 
-/* import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
+/* import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
 export const fetchData = createAsyncThunk('fetch/data', async () => {
     const res = await fetch('https://fakestoreapi.com/products')
@@ -130,7 +148,7 @@ export default fetchSlice.reducer */
 
 // TODO
 
-import { createSlice } from '@reduxjs/toolkit'
+/* import { createSlice } from '@reduxjs/toolkit'
 
 const todoSlice = createSlice({
     name: 'todo',
@@ -150,7 +168,7 @@ const todoSlice = createSlice({
             state.input = ''
         },
         remove: (state, action) => {
-            state.list = state.list.filter(l => l !== action.payload)
+            state.list = state.list.filter((l, i) => i !== action.payload)
         },
         startEditing: (state, action) => {
             state.editingIndex = action.payload
@@ -164,5 +182,4 @@ const todoSlice = createSlice({
 })
 
 export const { setInput, setList, remove, startEditing, cancelEditing } = todoSlice.actions
-
-export default todoSlice.reducer
+export default todoSlice.reducer */

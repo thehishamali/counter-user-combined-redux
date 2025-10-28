@@ -68,6 +68,24 @@ export default function App() {
   )
 } */
 
+/* import { useSelector, useDispatch } from 'react-redux'
+import { increment, decrement, reset, incrementByValue } from './reducers.jsx'
+
+export default function App() {
+  const count = useSelector(state => state.counter.count)
+  const dispatch = useDispatch()
+
+  return (
+    <>
+      <h1>{count}</h1>
+      <button onClick={() => dispatch(increment())}>+</button>
+      <button onClick={() => dispatch(decrement())}>-</button>
+      <button onClick={() => dispatch(reset())}>Reset</button>
+      <button onClick={() => dispatch(incrementByValue(5))}>Increment by a delta</button>
+    </>
+  )
+} */
+
 
 // FETCH - USING THUNK
 
@@ -100,11 +118,11 @@ export default function App() {
 
   return (
     <>
-      <button onClick={() => dispatch(fetchData())}>Load data</button>
+      <button onClick={() => dispatch(fetchData())}>Add info</button>
       {loading && <p>Loading...</p>}
       {error && <p>Error: {error.message}</p>}
-      {info.length > 0 && info.map(i => {
-        return <li key={i.id}>{i.title}</li>
+      {info.length > 0 && info.map(l => {
+        return <li key={l.id}>{l.title}</li>
       })}
     </>
   )
@@ -113,8 +131,8 @@ export default function App() {
 
 // TODO
 
-import { useSelector, useDispatch } from 'react-redux'
-import { setInput, setList, remove, startEditing, cancelEditing } from './reducers'
+/* import { useSelector, useDispatch } from 'react-redux'
+import { setInput, setList, remove, startEditing, cancelEditing } from './reducers.jsx'
 
 export default function App() {
   const input = useSelector(state => state.todo.input)
@@ -124,12 +142,12 @@ export default function App() {
 
   return (
     <>
-      <input value={input} onChange={(e) => dispatch(setInput(e.target.value))} />
+      <input type='text' value={input} placeholder='Type anything...' onChange={(e) => dispatch(setInput(e.target.value))} />
       <button onClick={() => dispatch(setList())}>{editingIndex === null ? 'Submit' : 'Save'}</button>
       {editingIndex !== null && <button onClick={() => dispatch(cancelEditing())}>Cancel</button>}
       <ul>
-        {list.map((l, i) => <li key={i}>{l} <button onClick={() => dispatch(startEditing(i))}>Edit</button> <button onClick={() => dispatch(remove(l))}>Remove</button></li>)}
+        {list.map((l, i) => <li key={i}>{l} <button onClick={() => dispatch(startEditing(i))}>Edit</button> <button onClick={() => dispatch(remove(i))}>Remove</button></li>)}
       </ul>
     </>
   )
-}
+} */
